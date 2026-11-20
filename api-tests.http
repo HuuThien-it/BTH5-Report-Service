@@ -1,0 +1,38 @@
+### BTH5 API tests. Requires BTH3 :8081 and BTH4 :8082 running.
+### Replace 3 with a real product ID from GET http://localhost:8081/products
+@reportUrl = http://localhost:8083
+@productId = 3
+
+### 1) Check report list (starts empty)
+GET {{reportUrl}}/reports
+
+### 2) Set cost price (VND) for product; do NOT confuse with selling price
+PUT {{reportUrl}}/costs/{{productId}}
+Content-Type: application/json
+
+{ "unitCost": 14000000 }
+
+### 3) View the cost catalog
+GET {{reportUrl}}/costs
+
+### 4) Create new snapshot from BTH3 and BTH4 (completed orders only count as sold)
+POST {{reportUrl}}/reports/generate
+
+### 5) Latest report, including product and order breakdown
+GET {{reportUrl}}/reports/latest
+
+### 6) Per-product report
+GET {{reportUrl}}/reports/products
+
+### 7) Per-order report
+GET {{reportUrl}}/reports/orders
+
+### 8) Report history and historical report by ID
+GET {{reportUrl}}/reports
+
+### Substitute report ID from previous response for 1
+GET {{reportUrl}}/reports/1
+
+GET {{reportUrl}}/reports/1/products
+
+GET {{reportUrl}}/reports/1/orders

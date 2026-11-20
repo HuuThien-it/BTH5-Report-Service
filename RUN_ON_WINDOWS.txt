@@ -1,0 +1,12 @@
+BTH5-Report-Service - HUONG DAN NHANH
+====================================
+1. MySQL Workbench: mo database.sql, bam Execute All (5 bang, database BTH5_REPORT).
+2. Mo dung thu muc BTH5-Report-Service chua pom.xml bang IntelliJ IDEA.
+3. File > Project Structure > SDK = Java 21; Maven Reload All.
+4. Run > Edit Configurations > Environment variables:
+   DB_USER=root;DB_PASSWORD=<your own MySQL password>
+5. Chay BTH3 port 8081, BTH4 port 8082, BTH5 port 8083.
+6. GET http://localhost:8083/reports -> [] (chua tao report).
+7. Chinh ID san pham va gia von trong api-tests.http, thuc hien cac request.
+8. POST http://localhost:8083/reports/generate -> 201; GET /reports/latest.
+Xem README.md de biet quy uoc doanh thu/chi phi, chi tiet test, SQL.
